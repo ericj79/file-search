@@ -1,20 +1,24 @@
 #! python
+
+# import needed libraries
 import argparse
 from os import listdir, getcwd
 from os.path import isfile, join, abspath
 
 
-parser = argparse.ArgumentParser(description="Look for string in files")
-parser.add_argument('search', help="The string to search for")
-parser.add_argument('--dir', dest="directory", default=getcwd(), help="Optional directory to search. Default: current directory")
+PARSER = argparse.ArgumentParser(description="Look for string in files")
+PARSER.add_argument('search', help="The string to search for")
+PARSER.add_argument('--dir', dest="directory", default=getcwd(),
+                    help="Optional directory to search. Default: current directory")
 
-args = parser.parse_args()
+ARGS = PARSER.parse_args()
 
-needle = args.search
-path = abspath(args.directory)
+needle = ARGS.search
+path = abspath(ARGS.directory)
 print "\nSearching all files in " + path + " for the '" + needle + "':\n"
 
-allFiles = [filename for filename in listdir(path) if isfile(join(path, filename))]
+allFiles = [filename for filename in listdir(
+    path) if isfile(join(path, filename))]
 
 fileMatches = 0
 contentMatches = 0
