@@ -6,7 +6,7 @@ import argparse
 from os import listdir, getcwd
 from os.path import isfile, join, abspath
 
-# Parse command line arguments using arparse.ArgumentParser.
+# Parse command line arguments using argparse.ArgumentParser.
 # We will need a string to search for and an optional directory to search in
 PARSER = argparse.ArgumentParser(description="Look for string in files")
 PARSER.add_argument('search', help="The string to search for")
@@ -15,10 +15,10 @@ PARSER.add_argument('--dir', dest="directory", default=getcwd(),
 
 ARGS = PARSER.parse_args()
 
-# Get search and directory arguements
+# Get search and directory arguments
 NEEDLE = ARGS.search
 PATH = abspath(ARGS.directory)
-print("\nSearching all files in " + PATH + " for the '" + NEEDLE + "':\n")
+print("\nSearching all files in " + PATH + " for the text '" + NEEDLE + "':\n")
 
 # Get a list of all files in the directory
 ALL_FILES = [filename for filename in listdir(
